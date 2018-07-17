@@ -1,0 +1,4 @@
+<resources>
+  <string name="app_name">AndroidBase</string>
+  <string name="btn_click">点击按钮</string>
+</resources>
