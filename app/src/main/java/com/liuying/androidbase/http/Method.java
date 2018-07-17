@@ -1,4 +1,4 @@
-package com.liuying.androidbase.utils;
+package com.liuying.androidbase.http;
 
 import android.support.annotation.IntDef;
 

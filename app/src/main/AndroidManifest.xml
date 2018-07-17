@@ -3,7 +3,7 @@
     package="com.liuying.androidbase">
 
   <uses-permission android:name="android.permission.INTERNET"/>
-  
+
   <application
       android:name=".MyApplication"
       android:allowBackup="true"
@@ -20,6 +20,23 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+
+
+    <activity
+        android:name="com.github.mzule.activityrouter.router.RouterActivity"
+        android:theme="@android:style/Theme.NoDisplay">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+
+        <data android:scheme="ly"/> <!-- 改成自己的scheme -->
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".activity.RouterDemo"
+        android:screenOrientation="portrait"/>
   </application>
 
 </manifest>
