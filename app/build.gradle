@@ -1,8 +1,18 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'com.android.library'
 //apply plugin: 'com.jakewharton.butterknife'
+
 android {
+  useLibrary 'org.apache.http.legacy'
   compileSdkVersion 28
+
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+
   defaultConfig {
     applicationId "com.liuying.androidbase"
     minSdkVersion 16

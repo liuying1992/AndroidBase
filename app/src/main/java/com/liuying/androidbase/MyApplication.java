@@ -7,7 +7,14 @@ import android.app.Application;
  * Email: ly1203575492@163.com
  */
 public class MyApplication extends Application {
+  private static MyApplication sMyApplication;
+
   @Override public void onCreate() {
     super.onCreate();
+    sMyApplication = this;
+  }
+
+  public static MyApplication getInstance() {
+    return sMyApplication;
   }
 }

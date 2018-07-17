@@ -7,7 +7,13 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.airbnb.lottie.LottieAnimationView;
+import com.liuying.androidbase.http.RequestManager;
+import com.liuying.androidbase.http.RequestObject;
+import com.liuying.androidbase.pojo.HttpObject;
+import com.liuying.androidbase.pojo.NewPojo;
+import com.liuying.androidbase.utils.BaseSubscription;
 import com.liuying.androidbase.utils.L;
+import com.liuying.androidbase.utils.Method;
 import com.liuying.androidbase.utils.RxJavaUtil;
 
 /***
@@ -26,10 +32,22 @@ public class MainActivity extends AppCompatActivity {
       @Override public void onClick(View view) {
         //Toast.makeText(MainActivity.this, "点击了", Toast.LENGTH_SHORT).show();
         RxJavaUtil.FlowableGet();
+        RequestObject requestObject = new RequestObject();
+
+        RequestManager.getInstance()
+            .makeRequest(requestObject, "https://www.apiopen.top/journalismApi", Method.GET, false,
+                NewPojo.DataBean.class)
+            .subscribe(new BaseSubscription<HttpObject>() {
+              @Override public void onNext(HttpObject httpObject) {
+                NewPojo.DataBean mData = (NewPojo.DataBean) httpObject.getData();
+              }
+
+              @Override public void onError(Throwable t) {
+                L.e(t.toString());
+              }
+            });
       }
     });
     mBtn.performClick();
-    L.json(
-        "{\t\"code\":1,\t\"message\":\"成功!\",\t\"object\":{\t\t\"id\":97797,\t\t\"name\":\"梁施施\",\t\t\"mobile\":\"14200000000\",\t\t\"photoPublic\":{\t\t\t\"originalFile\":\"/PUBLIC/FACE/2018-07-04/8da9e48b-c069-4d8f-a223-2eb91912e96f.jpg\",\t\t\t\"fullPath\":\"http://cdnpubimg.cheok.com/PUBLIC/FACE/2018-07-04/8da9e48b-c069-4d8f-a223-2eb91912e96f.jpg\"\t\t},\t\t\"photo\":\"/PUBLIC/FACE/2018-07-04/8da9e48b-c069-4d8f-a223-2eb91912e96f.jpg\",\t\t\"nickname\":\"梁施施\",\t\t\"idcard\":\"666666666666666666\",\t\t\"provinceID\":5,\t\t\"provinceName\":\"广东\",\t\t\"cityID\":44,\t\t\"cityName\":\"佛山市\",\t\t\"countyID\":null,\t\t\"countyName\":\"\",\t\t\"address\":\"测试\",\t\t\"empID\":29730,\t\t\"empName\":\"王华华业务员\",\t\t\"empMobile\":\"14100000000\",\t\t\"empPhotoPublic\":{\t\t\t\"originalFile\":null,\t\t\t\"fullPath\":null\t\t},\t\t\"empPhoto\":null,\t\t\"role\":3,\t\t\"isInitPayPwd\":1,\t\t\"roleID\":4,\t\t\"authStatus\":2,\t\t\"isModify\":1,\t\t\"bankBindStatus\":null,\t\t\"isRealName\":1,\t\t\"realName\":\"梁施施\",\t\t\"realIdCard\":\"666666666666666666\",\t\t\"deviceToken\":\"0b449c68245aed0ba4324618c94550c1\",\t\t\"isAgainAuth\":0,\t\t\"isAllowAgainAuth\":1,\t\t\"isOpenActivity\":0,\t\t\"isGreatCarEntrance\":0,\t\t\"isAssistEntrance\":0,\t\t\"pagehomeID\":55549,\t\t\"greatCarType\":null,\t\t\"storeProvinceID\":5,\t\t\"storeProvinceName\":\"广东\",\t\t\"storeCityID\":44,\t\t\"storeCityName\":\"佛山市\",\t\t\"storeCountyID\":null,\t\t\"storeCountyName\":null,\t\t\"rankID\":1\t},\t\"map\":{},\t\"handelEntity\":null}");
   }
 }
