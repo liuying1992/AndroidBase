@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import com.liuying.androidbase.utils.AppManager;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * 基础类
@@ -26,6 +29,7 @@ public class BaseActivity extends AppCompatActivity {
 
   @Override protected void onStart() {
     super.onStart();
+    EventBus.getDefault().register(this);
   }
 
   @Override protected void onResume() {
@@ -38,6 +42,7 @@ public class BaseActivity extends AppCompatActivity {
 
   @Override protected void onStop() {
     super.onStop();
+    EventBus.getDefault().unregister(this);
   }
 
   @Override protected void onDestroy() {
@@ -83,5 +88,9 @@ public class BaseActivity extends AppCompatActivity {
 
   public void slideInFromLeft() {
     this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+  }
+
+  @Subscribe(threadMode = ThreadMode.MAIN) public void onMessageEvent(Object object) {
+    /* Do something */
   }
 }

@@ -7,8 +7,6 @@ import java.util.List;
  * Email: ly1203575492@163.com
  */
 public class NewPojo {
-
-
   private int code;
   private String msg;
   private DataBean data;

@@ -5,6 +5,11 @@
     android:orientation="vertical"
     >
   <include layout="@layout/tool_bar"/>
-
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="onEvent"
+      android:text="event bus"
+      />
 
 </LinearLayout>
