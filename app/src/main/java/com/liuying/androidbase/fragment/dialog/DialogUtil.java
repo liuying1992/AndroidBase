@@ -2,14 +2,12 @@ package com.liuying.androidbase.fragment.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,19 +20,32 @@ import com.liuying.androidbase.R;
  */
 
 public class DialogUtil extends DialogFragment {
+  @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setStyle(DialogFragment.STYLE_NO_TITLE, R.style.BottomDialog);
+  }
+
   @Nullable @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-    getDialog().setCanceledOnTouchOutside(false);
+    getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    //getDialog().setCanceledOnTouchOutside(false);
     //添加这句话后 dialog背景变成透明
     //getDialog().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-    getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
-      @Override public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
-        return true;
-      }
-    });
+    //  getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
+    //    @Override public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
+    //      return true;
+    //    }
+    //  });
+
     return super.onCreateView(inflater, container, savedInstanceState);
+  }
+
+  @Override public void onStart() {
+    super.onStart();
+    if (getDialog() != null) {
+      getDialog().getWindow().setLayout(-1, -2);
+    }
   }
 
   @NonNull @Override public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

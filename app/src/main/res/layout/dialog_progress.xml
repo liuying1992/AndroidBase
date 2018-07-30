@@ -5,18 +5,19 @@
     android:background="@android:color/transparent"
     >
   <RelativeLayout
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:background="@drawable/dialog_round_bg"
-      android:minHeight="100dp"
+      android:layout_alignParentBottom="true"
+      android:background="@color/colorAccent"
+      android:minHeight="200dp"
       android:minWidth="100dp"
       >
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
+    <!--  android:background="@drawable/dialog_round_bg"-->
+    <!--<ProgressBar-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--/>-->
 
   </RelativeLayout>
 </RelativeLayout>
