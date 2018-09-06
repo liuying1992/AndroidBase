@@ -29,8 +29,8 @@ public class DialogUtil extends DialogFragment {
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-    //getDialog().setCanceledOnTouchOutside(false);
-    //添加这句话后 dialog背景变成透明
+    getDialog().setCanceledOnTouchOutside(true);
+    ////添加这句话后 dialog背景变成透明
     //getDialog().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
     //  getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
     //    @Override public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
